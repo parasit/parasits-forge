@@ -10,23 +10,25 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		TestPlayer pp;
-		pp = new TestPlayer(5, 5, 5, 15);
+		int[] tmp = {-Effect.EFFECT_DAMAGE_FIRE};
+		pp = new TestPlayer(5, 5, 5, 15, tmp);
 
 		Effect e,e2;
-		e = new Effect(Constans.EFFECT_HEAL, 3, "2d6");
-		e2 = new Effect(Constans.EFFECT_DAMAGE_IMPAILING, 1, "d6");
+		e = new Effect(Effect.EFFECT_HEAL, 3, "2d6");
+		e2 = new Effect(Effect.EFFECT_DAMAGE_FIRE, 1, "d6");
 		pp.addEffect(e);
-		pp.addEffect(e2);
-		System.out.println(pp.HitPoints.getCurValue());
+		System.out.println(pp.getCurrentHitPoints());
 		for (int x = 0; x < 10; x++) {
 			pp.doEffects();
-			System.out.println(pp.HitPoints.getCurValue());
+			e2.doEffect(pp);
+			System.out.println(pp.getCurrentHitPoints());
 		}
+		
 
 		if (pp.isAlive()) {
 			System.out.println("Its alive");
 		} else {
-			System.out.println("Its death");
+			System.out.println("Its dead");
 		}
 	}
 
