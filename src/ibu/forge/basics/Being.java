@@ -8,10 +8,21 @@ public abstract class Being {
 
 	public Attribute HitPoints;
 	public Attribute ManaPoints;
+	
+	EffectList currentEffects;
 
-	public Being() {
-		this.Strenght = new Attribute(0);
-		this.HitPoints = new Attribute(0);
+	public Being(int strength, int dexterity, int inteligence, int health) {
+		this.Strenght = new Attribute(strength);
+		this.Dexterity = new Attribute(dexterity);
+		this.Inteligence = new Attribute(inteligence);
+		this.Health = new Attribute(health);
+		this.HitPoints = new Attribute(health * 2);
+		this.ManaPoints = new Attribute(inteligence * 2);
+		currentEffects = new EffectList(this);
+	}
+	
+	public void log(int level, String message) {
+		System.out.println(message);
 	}
 	
 	public boolean isAlive() {
@@ -20,6 +31,14 @@ public abstract class Being {
 		} else {
 			return false;
 		}
+	}
+	
+	public void doEffects() {
+		currentEffects.doEffects();
+	}
+	
+	public void addEffect(Effect e) {
+		currentEffects.add(e);
 	}
 
 	public void getDamage(int type, int material, int value) {

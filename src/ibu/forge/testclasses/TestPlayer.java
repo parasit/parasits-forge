@@ -4,9 +4,7 @@ import ibu.forge.basics.*;
 
 public class TestPlayer extends Being {
 	
-	public TestPlayer() {
-		super();
-		this.HitPoints.setValue(10);
-		this.HitPoints.setCurValue(10);
+	public TestPlayer(int strength, int dexterity, int inteligence, int health) {
+		super(strength, dexterity, inteligence, health);
 	}
 }

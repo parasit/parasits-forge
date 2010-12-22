@@ -24,4 +24,8 @@ public class Attribute {
 	public void setCurValue(int curValue) {
 		CurValue = curValue;
 	}
+	
+	public void addCurValue(int curValue) {
+		CurValue += curValue;
+	}
 }
